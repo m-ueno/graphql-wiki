@@ -2,18 +2,22 @@
   "name": "synthesis-db",
   "version": "1.0.0",
   "description": "",
-  "main": "db.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.9.1",
     "babel-preset-node5": "^11.1.0",
+    "babel-register": "^6.11.6",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-generator": "^4.13.4",
+    "express-graphql": "^0.5.3",
     "faker": "^3.1.0",
+    "graphql": "^0.6.2",
     "lodash": "^4.14.1",
     "pg": "^6.0.3",
     "pg-hstore": "^2.3.2",

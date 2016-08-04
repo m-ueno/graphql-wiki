@@ -5,6 +5,10 @@
  * DELETE /entry/:id
 */
 
+import Express from 'express';
+import GraphHTTP from 'express-graphql';
+import Schema from './schema';
+
 var express = require('express')
   , http    = require('http')
   , path    = require('path')
@@ -18,6 +22,12 @@ var models = require('./models');
 //  , routes  = require('./routes')
 
 var app = express();
+
+app.use('/graphql', GraphHTTP({
+  schema: Schema,
+  pretty: true,
+  graphiql: true
+}));
 
 app.use(bodyParser.json()); // for parsing application/json
 app.set('port', process.env.PORT || 3124);

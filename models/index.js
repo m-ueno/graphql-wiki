@@ -22,6 +22,9 @@ if (!global.hasOwnProperty('db')) {
     Author:      sequelize.import(__dirname + '/author'),
     Entry:      sequelize.import(__dirname + '/entry'),
     Tag:      sequelize.import(__dirname + '/tag'),
+    author:      sequelize.import(__dirname + '/author'),
+    entry:      sequelize.import(__dirname + '/entry'),
+    tag:      sequelize.import(__dirname + '/tag'),
     // add your other models here
   }
 
