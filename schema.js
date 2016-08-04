@@ -264,42 +264,57 @@ const Query = new GraphQLObjectType({
   }
 });
 
-/*
 const Mutation = new GraphQLObjectType({
-  name: 'Mutations',
+  name: 'WikiMutations',
   description: 'Functions to set stuff',
-  fields () {
-    return {
-      addPerson: {
-        type: Person,
-        args: {
-          firstName: {
-            type: new GraphQLNonNull(GraphQLString)
-          },
-          lastName: {
-            type: new GraphQLNonNull(GraphQLString)
-          },
-          email: {
-            type: new GraphQLNonNull(GraphQLString)
-          }
+  fields: () => ({
+    createAuthor: {
+      type: Author,
+      args: {
+        name: {
+          type: new GraphQLNonNull(GraphQLString),
         },
-        resolve (source, args) {
-          return Models.person.create({
-            firstName: args.firstName,
-            lastName: args.lastName,
-            email: args.email.toLowerCase()
-          });
+        email: {
+          type: new GraphQLNonNull(GraphQLString),
+        },
+      },
+      resolve (source, { name, email }) {
+        return Models.author.create({
+          name,
+          email,
+//          email.toLowerCase(),
+        });
+      },
+    },
+    /*
+    addPerson: {
+      type: Person,
+      args: {
+        firstName: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+        lastName: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+        email: {
+          type: new GraphQLNonNull(GraphQLString)
         }
+      },
+      resolve (source, args) {
+        return Models.person.create({
+          firstName: args.firstName,
+          lastName: args.lastName,
+          email: args.email.toLowerCase()
+        });
       }
-    };
-  }
+    }
+    */
+  }),
 });
-
-*/
 
 const Schema = new GraphQLSchema({
   query: Query,
-//  mutation: Mutation
+  mutation: Mutation
 });
 
 export default Schema;
