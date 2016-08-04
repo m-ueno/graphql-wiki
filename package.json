@@ -1,0 +1,22 @@
+{
+  "name": "synthesis-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-node5": "^11.1.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-generator": "^4.13.4",
+    "faker": "^3.1.0",
+    "lodash": "^4.14.1",
+    "pg": "^6.0.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.23.6"
+  }
+}
