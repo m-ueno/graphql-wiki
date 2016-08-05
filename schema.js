@@ -286,29 +286,39 @@ const Mutation = new GraphQLObjectType({
         });
       },
     },
-    /*
-    addPerson: {
-      type: Person,
+    createEntry: {
+      type: Entry,
       args: {
-        firstName: {
-          type: new GraphQLNonNull(GraphQLString)
+        title: {
+          type: new GraphQLNonNull(GraphQLString),
         },
-        lastName: {
-          type: new GraphQLNonNull(GraphQLString)
+        content: {
+          type: new GraphQLNonNull(GraphQLString),
         },
-        email: {
-          type: new GraphQLNonNull(GraphQLString)
-        }
+        user_id: {
+          type: new GraphQLNonNull(GraphQLInt),
+        },
+        category: {
+          type: GraphQLString,
+          defaultValue: 'no category',
+        },
       },
-      resolve (source, args) {
-        return Models.person.create({
-          firstName: args.firstName,
-          lastName: args.lastName,
-          email: args.email.toLowerCase()
-        });
-      }
-    }
-    */
+      resolve(source, args) {
+        const { title, content, user_id, category } = args;
+        const summary = content.substr(0,100);
+        return Models.Author.findOne({ id: user_id })
+          .then(author => {
+            return author.createEntry({
+              title,
+              content,
+              category,
+            });
+          })
+          .catch(e => {
+            throw new Error(e);
+          });
+      },
+    },
   }),
 });
 
